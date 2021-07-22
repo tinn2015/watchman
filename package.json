@@ -1,0 +1,34 @@
+{
+  "name": "watchman",
+  "version": "1.0.0",
+  "description": "A lightweight performance monitoring error reporting plugin",
+  "main": "dist/bundle.js",
+  "bin": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ts": "tsc",
+    "build": "node_modules/.bin/cross-env-shell NODE_ENV=production && node_modules/.bin/rollup -c ./build/rollup.config.prod.js",
+    "dev": "node_modules/.bin/rollup -w -c ./build/rollup.config.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinn2015/watchman.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tinn2015/watchman/issues"
+  },
+  "homepage": "https://github.com/tinn2015/watchman#readme",
+  "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.3",
+    "@rollup/plugin-typescript": "^8.2.3",
+    "cross-env": "^7.0.3",
+    "rollup": "^2.53.3",
+    "rollup-plugin-cleandir": "^1.0.0",
+    "rollup-plugin-filesize": "^9.1.1",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.3.5"
+  }
+}
