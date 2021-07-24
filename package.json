@@ -1,9 +1,9 @@
 {
-  "name": "watchman",
+  "name": "watchman-web-rc1",
   "version": "1.0.0",
   "description": "A lightweight performance monitoring error reporting plugin",
   "main": "dist/bundle.js",
-  "bin": "bin/index.js",
+  "bin": "src/bin/test.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "ts": "tsc",

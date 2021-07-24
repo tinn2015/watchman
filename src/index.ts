@@ -1,13 +1,21 @@
-// import watchError from './lib/error'
+import CatchError from './lib/error'
+import Report, {reportType} from './lib/report'
 
-// export default {
-//   watchError
-// }
-
-window.addEventListener('error', (err) => {
-  console.log('addEventListener', err)
-})
-console.log('tttt')
-window.onerror = (err) => {
-  console.log('onerror', err)
+class WatchMan {
+  report: reportType
+  catchError: object
+  constructor (config ={}) {
+    this.catchError = null
+    this.report = null
+    this.init(config)
+  }
+  private init (config) {
+    this.catchError = new CatchError()
+    this.report = new Report({interval: config.interval, url: config.url})
+  }
+  send (data) {
+    Report.send(data)
+  }
 }
+
+export default WatchMan

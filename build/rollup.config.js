@@ -11,7 +11,7 @@ module.exports = [
     output: {
       file: process.env.NODE_ENV === 'development' ? resolveFile('example/bundle.js') : resolveFile('dist/bundle.js'),
       format: 'umd',
-      name: 'watchman',
+      name: 'WatchMan',
     }, 
     plugins: [
       typescript(),

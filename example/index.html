@@ -12,7 +12,12 @@
   <img src="www.baidu.com/static/sss.png" alt="">
 
   <script>
-    alert(aa)
+    let watchman = new WatchMan({interval: 1000 * 5, url: 'http://localhost:3002/logout'})
+    console.log('watchman', watchman)
+
+    // alert(aa)
+    let p = Promise.reject(new Error('throw error'))
   </script>
+  <!-- <script src="http://www.baidu.com" crossorigin="anonymous"></script> -->
 </body>
 </html>
