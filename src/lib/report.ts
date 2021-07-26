@@ -26,7 +26,7 @@ class Report implements reportType {
   }
 
   static send (error: ErrorType) {
-    let reportData = sessionStorage.getItem('sessionStorageName')
+    let reportData = sessionStorage.getItem(sessionStorageName)
     let result: ErrorType[] = []
     if (!reportData) {
       result = [error]

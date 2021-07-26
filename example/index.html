@@ -12,8 +12,9 @@
   <img src="www.baidu.com/static/sss.png" alt="">
 
   <script>
-    let watchman = new WatchMan({interval: 1000 * 5, url: 'http://localhost:3002/logout'})
+    let watchman = new WatchMan({interval: 1000 * 60, url: 'http://localhost:3002/logout'})
     console.log('watchman', watchman)
+    watchman.send({data: 111, type: 'test'})
 
     // alert(aa)
     let p = Promise.reject(new Error('throw error'))

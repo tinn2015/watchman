@@ -14,6 +14,7 @@ class WatchMan {
     this.report = new Report({interval: config.interval, url: config.url})
   }
   send (data) {
+    console.log('send!!!!!!', data)
     Report.send(data)
   }
 }

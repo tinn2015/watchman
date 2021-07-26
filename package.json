@@ -1,6 +1,6 @@
 {
-  "name": "watchman-web-rc1",
-  "version": "1.0.0",
+  "name": "watchman-web",
+  "version": "1.0.1",
   "description": "A lightweight performance monitoring error reporting plugin",
   "main": "dist/bundle.js",
   "bin": "src/bin/test.js",

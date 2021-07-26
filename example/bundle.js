@@ -31,7 +31,7 @@
             }
         }
         Report.send = function (error) {
-            var reportData = sessionStorage.getItem('sessionStorageName');
+            var reportData = sessionStorage.getItem(sessionStorageName);
             var result = [];
             if (!reportData) {
                 result = [error];
@@ -73,7 +73,6 @@
         function CatchError() {
             var _this = this;
             window.addEventListener('error', function (err) {
-                console.log(err);
                 _this.handleError(err);
             }, true);
             // window.onerror = (message, source, lineno, colno, error) => {
@@ -93,7 +92,6 @@
              * @return {*}
              */
             window.onunhandledrejection = function (e) {
-                console.log('promise onunhandledrejection', e);
                 _this.handlePromiseError(e);
             };
         }
@@ -115,7 +113,6 @@
                     error.src = e.srcElement.src;
                 }
             }
-            console.log('handle error~~~~~~~~', error);
             this.reportError(error);
         };
         CatchError.prototype.handlePromiseError = function (e) {
@@ -128,7 +125,6 @@
                 message: e.reason.message,
                 stack: e.reason.stack
             };
-            console.log('~~~~~~~~~~~~~', error, e.reason);
             Report.send(error);
         };
         CatchError.prototype.reportError = function (error) {
@@ -149,6 +145,7 @@
             this.report = new Report({ interval: config.interval, url: config.url });
         };
         WatchMan.prototype.send = function (data) {
+            console.log('send!!!!!!', data);
             Report.send(data);
         };
         return WatchMan;

@@ -12,7 +12,6 @@ import Report from './report'
 class CatchError {
   constructor () {
     window.addEventListener('error', (err) => {
-      console.log(err)
       this.handleError(err)
     }, true)
     // window.onerror = (message, source, lineno, colno, error) => {
@@ -34,7 +33,6 @@ class CatchError {
      * @return {*}
      */    
     window.onunhandledrejection = (e) => {
-      console.log('promise onunhandledrejection', e)
       this.handlePromiseError(e)
     }
   }
@@ -56,7 +54,6 @@ class CatchError {
         error.src = e.srcElement.src
       }
     }
-    console.log('handle error~~~~~~~~', error)
     this.reportError(error)
   }
 
@@ -70,7 +67,6 @@ class CatchError {
       message: e.reason.message,
       stack: e.reason.stack
     }
-    console.log('~~~~~~~~~~~~~',error, e.reason)
     Report.send(error)
   }
 
