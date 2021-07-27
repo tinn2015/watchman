@@ -133,19 +133,57 @@
         return CatchError;
     }());
 
+    var Performance = /** @class */ (function () {
+        function Performance() {
+            var _this = this;
+            // this.performance = window.performance
+            window.addEventListener('load', function () {
+                console.log('load');
+                setTimeout(function () {
+                    _this.timingHandle();
+                }, 1000);
+            });
+        }
+        Performance.prototype.timingHandle = function () {
+            var timing = window.performance.timing;
+            var timingObj_net = {};
+            var timingObj_dom = {};
+            timingObj_net['DNS解析用时：'] = (timing.domainLookupEnd - timing.domainLookupStart) / 1000 + 's';
+            timingObj_net['TCP完成握手用时：'] = (timing.connectEnd - timing.connectStart) / 1000 + 's';
+            timingObj_net['HTTP请求响应完成用时：'] = (timing.responseEnd - timing.responseStart) / 1000 + 's';
+            timingObj_net['网络总用时：'] = (timing.responseEnd - timing.navigationStart) / 1000 + 's';
+            timingObj_dom['DOM解析完成用时：'] = (timing.domInteractive - timing.domLoading) / 1000 + 's';
+            timingObj_dom['DOM解析完成且资源加载完成用时：'] = (timing.domComplete - timing.domLoading) / 1000 + 's';
+            timingObj_dom['脚本加载用时：'] = (timing.domContentLoadedEventEnd - timing.domContentLoadedEventStart) / 1000 + 's';
+            timingObj_dom['onload事件用时：'] = (timing.loadEventEnd - timing.loadEventStart) / 1000 + 's';
+            timingObj_dom['白屏时间：'] = (timing.domLoading - timing.navigationStart) / 1000 + 's';
+            timingObj_dom['页面可交互用时：'] = (timing.domInteractive - timing.navigationStart) / 1000 + 's';
+            timingObj_dom['页面总耗用时：'] = ((timing.loadEventEnd || timing.loadEventStart || timing.domComplete || timing.domLoading) - timing.navigationStart) / 1000 + 's';
+            for (var key in timingObj_net) {
+                console.log(key + " " + timingObj_net[key]);
+            }
+            console.log('---------分割线---------');
+            for (var key in timingObj_dom) {
+                console.log(key + " " + timingObj_dom[key]);
+            }
+        };
+        return Performance;
+    }());
+
     var WatchMan = /** @class */ (function () {
         function WatchMan(config) {
             if (config === void 0) { config = {}; }
             this.catchError = null;
             this.report = null;
+            this.performance = null;
             this.init(config);
         }
         WatchMan.prototype.init = function (config) {
             this.catchError = new CatchError();
+            this.performance = new Performance();
             this.report = new Report({ interval: config.interval, url: config.url });
         };
         WatchMan.prototype.send = function (data) {
-            console.log('send!!!!!!', data);
             Report.send(data);
         };
         return WatchMan;
