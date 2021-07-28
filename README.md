@@ -6,7 +6,7 @@ A lightweight performance monitoring error reporting plugin
 import WatchMan from 'watchman-web'
 
 const watchman = new WatchMan({
-  url: 'localhost:3000/report' // 错误上报接口
+  url: 'localhost:3000/report', // 错误上报接口
   interval: 5000  // 上报频率
 })
 
