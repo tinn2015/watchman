@@ -1,5 +1,5 @@
 const path = require('path');
-const buble = require('@rollup/plugin-buble'); 
+const buble = require('@rollup/plugin-buble'); // babel汇总
 const typescript = require('@rollup/plugin-typescript');
 
 const resolveFile = function(filePath) {
